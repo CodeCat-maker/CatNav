@@ -1,0 +1,51 @@
+html, body, pre, code, kbd, samp {
+    font-family: 'Roboto', sans-serif;
+}
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+/* a{
+	color: #0288D1;
+} */
+header a{
+	margin-left: 1.25rem;
+}
+#app{
+	display: block;
+	width: 100vw;
+	overflow: hidden;
+	position: relative;
+}
+header {
+	padding: 1.25rem;
+	position: absolute;
+	width: 100vw;
+	right: 0;
+	top: 0;
+	height: 5.2rem;
+	background: #f4f5f6;
+	border-bottom: .1rem solid #d1d1d1;
+	display: block;
+}
+.main{
+	margin-top: 10rem;
+}
+.list{
+	margin: 8rem 0;
+}
+.list small{
+	margin-left: 1.2550rem;
+	text-decoration-line: underline;
+	text-decoration-color: #50BDBD;
+}
+footer{
+	text-align: center;
+}
+@media (max-width: 50.0rem) { 
+	header a{
+		display: none;
+	}
+	
+}

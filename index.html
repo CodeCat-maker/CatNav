@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>导航</title>
+		<link rel="shortcut icon" href="ico.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- <script src="https://unpkg.com/vue@next"></script> -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+		<script src="js/v2.6.10/vue.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+		        referrerpolicy="no-referrer" />
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<header>
+				<section class="backGround"></section>
+				<div class="container">
+					<div class="row">
+						<div class="column">
+							<p>{{hearder.title}}</p>
+						</div>
+						<div class="column column-25 column-offset-25">
+							<a v-for="i in list" :href="'#'+i.id">{{i.title}}</a>
+						</div>
+					</div>
+				</div>
+			</header>
+			<div class="main">
+				<div class="container">
+					<div class="row">
+						<div class="column" id="search">
+							 <input v-model="keyWord" type="text" class="input" placeholder="Google search...">
+							    <button class="btn" @click="search">
+							            <i class="fas fa-search"></i>
+							    </button>
+						</div>
+					</div>
+					<div class="list" v-for="i in list">
+						<div class="item" :id="i.id">
+							<h3>{{i.title}}</h3>
+							<blockquote>
+							  <p><em>{{i.describtion}}</em></p>
+							</blockquote>
+							<dl v-for="j in i.urls">
+								<a :href="j.url">{{j.name}}</a><small>{{j.content}}</small>
+							</dl>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer>
+				<hr />
+				<p>Do you want <a href="https://github.com/CodeCat-maker/CatNav">start</a> it? So do it! This means a lot of to me ❤️</p>
+				<small>Design by Codecat🐱</small>
+			</footer>
+		</div>
+	</body>
+	<script src="js/index.js"></script>
+</html>
