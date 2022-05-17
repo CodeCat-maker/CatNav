@@ -1,5 +1,3 @@
-<img src="https://i.bmp.ovh/imgs/2022/05/17/c1f2881bcc4aaac6.png" style="zoom:50%;" />
-
 # CatNav
 
 created by Vue2.x
