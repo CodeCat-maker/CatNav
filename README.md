@@ -41,6 +41,8 @@ docker run --name nginx-nav -v /home/ubuntu/server/nav:/usr/share/nginx/html:ro 
 
 -p:expose port
 
+![image-20221018153039848](http://cos.mineseb.cn/markdown/image-20221018153039848.png)
+
 # 🚩 Using
 
 ```sh
