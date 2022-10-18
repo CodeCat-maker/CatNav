@@ -1,63 +1,89 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>导航</title>
-		<link rel="shortcut icon" href="ico.ico">
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!-- <script src="https://unpkg.com/vue@next"></script> -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
-		<script src="js/v2.6.10/vue.js" type="text/javascript" charset="utf-8"></script>
-		<link rel="stylesheet" href="css/index.css" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-		        referrerpolicy="no-referrer" />
-		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	</head>
-	<body>
-		<div id="app">
-			<header>
-				<section class="backGround"></section>
-				<div class="container">
-					<div class="row">
-						<div class="column">
-							<p>{{hearder.title}}</p>
+
+<head>
+	<meta charset="utf-8" />
+	<title>导航</title>
+	<link rel="shortcut icon" href="ico.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- <script src="https://unpkg.com/vue@next"></script> -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+	<script src="js/v2.6.10/vue.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="css/index.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+		referrerpolicy="no-referrer" />
+	<script src="js/utils/axios.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<header>
+			<section class="backGround"></section>
+			<div class="container">
+				<div class="row">
+					<div class="column">
+						<p>{{hearder.title}}</p>
+					</div>
+					<div class="column column-25 column-offset-25">
+						<a v-for="i in list" :href="'#'+i.id">{{i.title}}</a>
+					</div>
+
+				</div>
+			</div>
+		</header>
+		<div class="main">
+			<div class="container">
+				<div class="radio">
+					<input type="radio" id="Google" value="Google" v-model="searchEngine" />
+					<label for="Google">Google</label>
+					<input type="radio" id="Baidu" value="Baidu" v-model="searchEngine" />
+					<label for="Baidu">Baidu</label>
+				</div>
+				<div class="row">
+					<div class="column" id="search">
+						<input v-model="keyWord" type="text" class="input" :placeholder="searchPach"
+							@keydown.enter="search" required autocomplete="off" @blur="blur" @focus="isShow=true">
+						<div class="select-panel">
+							<div class="select-item" v-for="word in suggestion" v-show="isShow" @click="select(word)">
+								<svg t="1652935768626" class="icon" viewBox="0 0 1024 1024" version="1.1"
+									xmlns="http://www.w3.org/2000/svg" p-id="2053" width="16" height="16">
+									<path
+										d="M400.085333 151.210667c-89.059556 0-172.672 47.616-218.197333 124.273777a14.222222 14.222222 0 1 0 24.462222 14.535112c40.433778-68.067556 114.659556-110.364444 193.735111-110.364445a14.222222 14.222222 0 1 0 0-28.444444zM170.197333 336.298667a14.236444 14.236444 0 0 0-17.080889 10.609777c-4.252444 18.147556-6.656 29.397333-6.656 49.592889a14.222222 14.222222 0 1 0 28.444445 0c0-17.137778 1.92-26.083556 5.902222-43.121777a14.222222 14.222222 0 0 0-10.609778-17.080889z"
+										fill="#9b4dca" p-id="2054"></path>
+									<path
+										d="M947.384889 821.944889L717.809778 592.384a70.584889 70.584889 0 0 0-16.64-12.472889 346.254222 346.254222 0 0 0 47.36-175.089778c0-192.142222-156.302222-348.444444-348.444445-348.444444-192.128 0-348.444444 156.302222-348.444444 348.444444s156.316444 348.430222 348.444444 348.430223c68.408889 0 132.209778-19.882667 186.083556-54.058667 2.915556 4.821333 6.570667 9.472 10.951111 13.852444l229.575111 229.589334a84.849778 84.849778 0 0 0 60.359111 24.974222 84.821333 84.821333 0 0 0 60.344889-24.974222 84.778667 84.778667 0 0 0 24.974222-60.330667 84.920889 84.920889 0 0 0-24.988444-60.359111zM108.529778 404.835556c0-160.768 130.787556-291.555556 291.555555-291.555556 160.782222 0 291.555556 130.787556 291.555556 291.555556 0 160.782222-130.801778 291.541333-291.555556 291.541333-160.768 0-291.555556-130.759111-291.555555-291.541333z m798.620444 497.578666c-10.766222 10.723556-29.496889 10.723556-40.248889 0L637.340444 672.839111c-1.991111-1.976889-2.730667-3.299556-2.830222-3.299555 0.042667-0.611556 0.824889-6.471111 17.080889-22.698667 16.213333-16.256 22.072889-16.995556 22.257778-17.109333 0.369778 0.113778 1.692444 0.853333 3.740444 2.887111l229.546667 229.560889c5.390222 5.390222 8.334222 12.529778 8.334222 20.138666a28.401778 28.401778 0 0 1-8.32 20.096z"
+										fill="#9b4dca" p-id="2055"></path>
+								</svg>
+								<span class="item-span">{{word}}</span>
+							</div>
 						</div>
-						<div class="column column-25 column-offset-25">
-							<a v-for="i in list" :href="'#'+i.id">{{i.title}}</a>
-						</div>
+						<button class="btn" @click="search">
+							<i class="fas fa-search"></i>
+						</button>
 					</div>
 				</div>
-			</header>
-			<div class="main">
-				<div class="container">
-					<div class="row">
-						<div class="column" id="search">
-							 <input v-model="keyWord" type="text" class="input" placeholder="Google search...">
-							    <button class="btn" @click="search">
-							            <i class="fas fa-search"></i>
-							    </button>
-						</div>
-					</div>
-					<div class="list" v-for="i in list">
-						<div class="item" :id="i.id">
-							<h3>{{i.title}}</h3>
-							<blockquote>
-							  <p><em>{{i.describtion}}</em></p>
-							</blockquote>
-							<dl v-for="j in i.urls">
-								<a :href="j.url">{{j.name}}</a><small>{{j.content}}</small>
-							</dl>
-						</div>
+				<div class="list" v-for="i in list">
+					<div class="item" :id="i.id">
+						<h3>{{i.title}}</h3>
+						<blockquote>
+							<p><em>{{i.describtion}}</em></p>
+						</blockquote>
+						<dl v-for="j in i.urls">
+							<a :href="j.url">{{j.name}}</a><small>{{j.content}}</small>
+						</dl>
 					</div>
 				</div>
 			</div>
-			<footer>
-				<hr />
-				<p>Do you want <a href="https://github.com/CodeCat-maker/CatNav">start</a> it? So do it! This means a lot of to me ❤️</p>
-				<small>Design by Codecat🐱</small>
-			</footer>
 		</div>
-	</body>
-	<script src="js/index.js"></script>
+		<footer>
+			<hr />
+			<p>Do you want <a href="https://github.com/CodeCat-maker/CatNav">start</a> it? So do it! This means a lot of
+				to me ❤️</p>
+			<small>Design by Codecat🐱</small>
+		</footer>
+	</div>
+</body>
+<script src="js/index.js"></script>
+
 </html>

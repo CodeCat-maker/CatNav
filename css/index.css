@@ -40,6 +40,40 @@ header {
 	text-decoration-line: underline;
 	text-decoration-color: #50BDBD;
 }
+.radio{
+	display: flex;
+}
+.radio *{
+	margin: 0 0.625rem;
+}
+.radio input{
+	position: relative;
+	top: 0.4rem;
+}
+.select-panel {
+	height: 0;
+	z-index: 999;
+}
+.select-item {
+	border: 1.875rem;
+	z-index: 999;
+	background: #fff;
+	opacity: 0.8;
+	padding-left: 1.25rem;
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+	padding-bottom: 0.625rem;
+}
+.select-item svg{
+	padding-top: 0.5rem;
+}
+.item-span{
+	padding-left: 1.25rem;
+	text-decoration: underline;
+	text-decoration-color: #9b4dca;
+}
+
 footer{
 	text-align: center;
 }
